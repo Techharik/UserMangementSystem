@@ -2,9 +2,15 @@ import 'dotenv/config'
 import express from 'express';
 import expressLayout from 'express-ejs-layouts';
 import routes from './server/routes/mainroutes.js'
+import connectDb from './server/config/db.js';
+import session from 'express-session'
+// import flash from 'express-flash-message';
+import flash from 'connect-flash'
+
+
 
 const app =express();
-const PORT = 3000 || process.env.PORT
+const PORT = 5000 || process.env.PORT
 
 //bodyParser
 app.use(express.urlencoded({extended:true}));
@@ -21,6 +27,33 @@ app.set('view engine','ejs');
 // app.get('/',(req,res)=>{
 //     res.render('index')
 // })
+
+//* Adding session
+app.use(session({
+    secret:'My secret is secret',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: false } //1 week
+}))
+
+//* Adding Flash
+
+app.use(flash());
+
+/**
+ * *Database connections*
+ */
+
+connectDb()
+
+
+
+
+
+
+
+
+
 
 /* 
 *router folders
