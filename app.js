@@ -30,10 +30,10 @@ app.set('view engine','ejs');
 
 //* Adding session
 app.use(session({
-  secret:'My secret is secret',
+  secret:process.env.SECRET,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: false } //1 week
+  cookie: { secure: false }  //1 week
 }))
 
 //* Adding Flash

@@ -12,8 +12,8 @@ const homepage =async (req,res)=>{
    }
 
    try{
-    let perPage =12;
-    let page = req.query.perPage || 1
+    let perPage =3;
+    let page = req.query.page || 1
 
     const customers = await userModal.aggregate([{$sort:{CreatedAt:-1}}])
     .skip(perPage*page - perPage)
@@ -40,11 +40,11 @@ const homepage =async (req,res)=>{
 */
 const addCoustomer =async(req,res)=>{
     const locals={
-     title:'Add HomePage',
+     title:'Add HomePage-Save',
      desc:'This is a homepage'
     }
  
-     res.render('coustomer/add',locals)
+     res.render('coustomer/add',{locals})
  }
 
 
@@ -84,15 +84,31 @@ const PostCoustomer = async (req,res)=>{
 
 
 
+/*
+! Get view user Page
+*/
 
 
+const viewCoustomer = async(req, res)=>{
+    const userId = req.params.userId;
+    
+    try{
+        const viewUser =await userModal.findById({_id:userId})
+        console.log(viewUser)
+        res.render('coustomer/view',{viewUser})
+        
+    }catch{
+        console.log('error')
+    }
+}
 
 
 
 export default {
     homepage,
     addCoustomer,
-    PostCoustomer
+    PostCoustomer,
+    viewCoustomer
 }
 
 

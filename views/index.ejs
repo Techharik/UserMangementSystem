@@ -1,3 +1,5 @@
+
+
 <div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Dashboard</h1>
     <div class="btn-toolbar mb-2 mb-md 0">
@@ -6,6 +8,10 @@
       </div>
     </div>
   </div>
+
+<button><a href="/add">Add Coustomer</a> </button>
+
+  <br>
   
   <% messages.forEach(element => { %>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -24,7 +30,7 @@
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Email</th>
-          <th scope="col" class="text-end">Action</th>
+          <th scope="col" class="text-end">telephone</th>
         </tr>
       </thead>
   
@@ -34,21 +40,22 @@
             <td><%= element.firstName %></td>
             <td><%= element.lastName %></td>
             <td><%= element.email %></td>
+            <td><%= element.Telephone %></td>
             <td class="text-end">
   
               <div class="d-flex flex-row justify-content-end gap-2">
   
                 <a href="/view/<%= element._id %>" type="button" class="btn btn-primary btn-small">
-                  <i class="bi bi-eye"></i>
+                  i
                 </a>
   
                 <a href="/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
-                  <i class="bi bi-pencil"></i>
+                  E
                 </a>
   
                 <form action="/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
                   <button type="submit" class="btn btn-danger btn-small">
-                    <i class="bi bi-person-x"></i>
+                    x
                   </button>
                 </form>
   
@@ -63,4 +70,8 @@
   </div>
 
 
-<button><a href="/add">Add Coustomer</a> </button>
+
+
+<% if (customers.length > 0) { %>
+     0
+<% } %>
