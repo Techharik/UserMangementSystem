@@ -11,7 +11,28 @@ const homepage =async (req,res)=>{
     desc:'This is a homepage'
    }
 
-    res.render('index',{locals,messages})
+   try{
+    let perPage =12;
+    let page = req.query.perPage || 1
+
+    const customers = await userModal.aggregate([{$sort:{CreatedAt:-1}}])
+    .skip(perPage*page - perPage)
+    .limit(perPage)
+    .exec()
+    const count = await userModal.count();
+
+    res.render('index',{locals,
+        messages, 
+        customers,
+        currentPage:page,
+        pagesCount:Math.ceil(count/perPage)
+    })
+
+   }catch(e){
+    console.log(e)
+   }
+
+    
 }
 
 /*
@@ -42,7 +63,6 @@ const PostCoustomer = async (req,res)=>{
    const exitsed = await userModal.findOne({firstName,email})
   
    if(exitsed){
-    console.log(exitsed)
     res.send('User already exists')
    }else{
     try{

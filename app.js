@@ -30,7 +30,7 @@ app.set('view engine','ejs');
 
 //* Adding session
 app.use(session({
-    secret:'My secret is secret',
+  secret:'My secret is secret',
   resave: true,
   saveUninitialized: true,
   cookie: { secure: false } //1 week
