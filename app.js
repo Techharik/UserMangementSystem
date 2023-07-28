@@ -6,6 +6,7 @@ import connectDb from './server/config/db.js';
 import session from 'express-session'
 // import flash from 'express-flash-message';
 import flash from 'connect-flash'
+import methodOveride from 'method-override'
 
 
 
@@ -15,6 +16,7 @@ const PORT = 5000 || process.env.PORT
 //bodyParser
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
+app.use(methodOveride('_method'))
 
 //static Routes
 app.use(express.static('public'))

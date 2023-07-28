@@ -1,9 +1,11 @@
+<div class="bg-slate-100 p-10  border-1 rounded m-10 border-yellow-500">
+
 <div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2"><%= viewUser.firstName  %> <%= viewUser.lastName  %></h1>
     <div class="btn-toolbar mb-2 mb-md 0">
       <div class="btn-group me-2">
-        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window">Share</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.print()">Export</button>
       </div>
     </div>
   </div>
@@ -29,35 +31,35 @@
   
   <ul class="list-group">
   
-    <li class="list-group-item"> 
+    <li class="list-group-item hover:bg-orange-200 cursor-pointer"> 
       <div class="row">
         <div class="col" style="max-width: 140px"> <b>Name:</b></div>
-        <div class="col"><%= viewUser.firstName %> <%= viewUser.lastName %></div>
+        <div class="col "><%= viewUser.firstName %> <%= viewUser.lastName %></div>
       </div>
     </li>
   
-    <li class="list-group-item"> 
+    <li class="list-group-item hover:bg-orange-200 cursor-pointer"> 
       <div class="row">
         <div class="col" style="max-width: 140px"> <b>Tel:</b></div>
         <div class="col"><%= viewUser.Telephone %></div>
       </div>
     </li>
   
-    <li class="list-group-item"> 
+    <li class="list-group-item hover:bg-orange-200 cursor-pointer"> 
       <div class="row">
         <div class="col" style="max-width: 140px"> <b>Email:</b></div>
         <div class="col"><%= viewUser.email %></div>
       </div>
     </li>
   
-    <li class="list-group-item"> 
+    <li class="list-group-item hover:bg-orange-200 cursor-pointer"> 
       <div class="row">
         <div class="col" style="max-width: 140px"> <b>Date Created:</b></div>
         <div class="col"><%= viewUser.createdAt %></div>
       </div>
     </li>
   
-    <li class="list-group-item"> 
+    <li class="list-group-item hover:bg-orange-200 cursor-pointer"> 
       <div class="row">
         <div class="col" style="max-width: 140px"> <b>Date Modified:</b></div>
         <div class="col"><%= viewUser.UpdatedAt %></div>
@@ -65,3 +67,5 @@
     </li>
   
   </ul>
+
+</div>
